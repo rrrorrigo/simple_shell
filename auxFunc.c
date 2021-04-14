@@ -33,6 +33,8 @@ char *_strdup(char *str)
  */
 int _strcmp(char *s1, char *s2)
 {
+	if (!s1 || !s2)
+		return (-1);
 	while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
 	{
 		s1++;
@@ -52,7 +54,7 @@ int _strcmp(char *s1, char *s2)
 char *entrada(char *cadena, size_t largo)
 {
 	int check;
-	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env", *aux;
+	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env", *aux, *aux2;
 
 	if (isatty(0))
 	{
@@ -73,15 +75,15 @@ char *entrada(char *cadena, size_t largo)
 		return (e2);
 	}
 	cadena = strtok(cadena, e3);
-	aux = _strdup(cadena);
-	aux = strtok(aux, " \t");
+	aux2 = _strdup(cadena);
+	aux = strtok(aux2, " \t");
 	if (_strcmp(aux, e) == 0)
 	{
 		free(cadena);
 		free(aux);
 		exit(1);
 	}
-	free(aux);
+	free(aux2);
 	if (_strcmp(cadena, env) == 0)
 	{
 		enviroment();
@@ -103,6 +105,11 @@ char **travel(char **string, char *cadena)
 
 	aux = strtok(cadena, "\n");
 	string[con] = strtok(aux, " \t");
+	if (!string[con])
+	{
+		string[con] = NULL;
+		return (string);
+	}
 	while (string[con])
 	{
 		con++;

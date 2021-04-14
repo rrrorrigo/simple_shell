@@ -29,6 +29,8 @@ char *str_concat(char *s1, char *s2)
 	int i, len1 = 0, len2 = 0;
 	char *strcat;
 
+	if (!s1 || !s2)
+		return (NULL);
 	for (; s1[len1] != '\0'; len1++)
 		;
 	for (; s2[len2] != '\0'; len2++)
@@ -53,23 +55,23 @@ char *str_concat(char *s1, char *s2)
 char *status(char *p, char **string, int length)
 {
 	struct stat st;
-	char *aux =  "/", *aux2;
+	char *aux =  "/", *aux2, *aux3;
 	int i = 0;
 
-	aux = str_concat(aux, p);
+	aux3 = str_concat(aux, p);
 	while (i < length)
 	{
-		aux2 = str_concat(string[i], aux);
+		aux2 = str_concat(string[i], aux3);
 		if (stat(aux2, &st) == 0)
 		{
-			free(aux);
+			free(aux3);
 			return (aux2);
 		}
 		else
 			free(aux2);
 		i++;
 	}
-	free(aux);
+	free(aux3);
 	return (NULL);
 }
 /**
@@ -101,7 +103,7 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 
 	path(com);
 	s = travel(s, cad);
-	if (stat(s[0], &st) == -1)
+	if (*s != NULL && stat(s[0], &st) == -1)
 	{
 		s[0] = status(s[0], com, length);
 		if (!s[0])
@@ -117,7 +119,8 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 			kill(getpid(), SIGTERM);
 		}
 	}
-	execve(s[0], s, NULL);
+	if (*s)
+		execve(s[0], s, NULL);
 	_free(cad, s, com);
 	kill(getpid(), SIGTERM);
 }
