@@ -101,7 +101,7 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 
 	path(com);
 	s = travel(s, cad);
-	if (stat(s[0], &st) == -1)
+	if (stat(s[0], &st) == -1 && s)
 	{
 		s[0] = status(s[0], com, length);
 		if (!s[0])
