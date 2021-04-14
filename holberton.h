@@ -39,4 +39,5 @@ int lengthPath(void);
 char **path(char **p);
 void _free(char *cad, char **s, char **com);
 void execute(char **com, char **s, char *cad, int length, int con, char *av);
+char *_strdup(char *str);
 #endif
