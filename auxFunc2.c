@@ -1,5 +1,23 @@
 #include "holberton.h"
 /**
+ * lengthPath - function that travel the path
+ * Return: the number of different path
+ */
+int lengthPath(void)
+{
+	char *aux;
+	int i = 0, con = 1;
+
+	aux = _getenv("PATH");
+	while (aux[i])
+	{
+		if (aux[i] == ':')
+			con++;
+		i++;
+	}
+	return (con);
+}
+/**
  * str_concat - function tht concatenate two strings
  * @s1: first string
  * @s2: second string
@@ -34,6 +52,7 @@ char *str_concat(char *s1, char *s2)
  */
 char *status(char *p, char **string, int length)
 {
+	struct stat st;
 	char *aux =  "/", *aux2;
 	int i = 0;
 
@@ -80,6 +99,7 @@ void _free(char *cadena, char **string, char **command)
  */
 void execute(char **com, char **s, char *cad, int length, int con, char *av)
 {
+	struct stat st;
 	char *aux1 = ": ", *aux2 = "not found\n";
 
 	path(com);
@@ -103,27 +123,4 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 	execve(s[0], s, NULL);
 	_free(cad, s, com);
 	kill(getpid(), SIGTERM);
-}
-/**
- * _strdup - duplicate a string
- * @str: string a copiar
- *
- * Return: pointer of the duplicated string.
- */
-char *_strdup(char *str)
-{
-	char *strdup;
-	int i, ii;
-
-	if (str == NULL)
-		return (NULL);
-	for (ii = 0; str[ii] != '\0'; ii++)
-	{
-	}
-	strdup = malloc(ii + 1);
-	if (strdup == NULL)
-		return (NULL);
-	for (i = 0; i < ii; i++)
-		strdup[i] = str[i];
-	return (strdup);
 }

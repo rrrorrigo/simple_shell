@@ -1,5 +1,29 @@
 #include "holberton.h"
 /**
+ * _strdup - prints buffer in hexa
+ * @str: the size of the memory to print
+ * Return: Nothing.
+ */
+
+char *_strdup(char *str)
+{
+	int a = 0;
+	int b = 0;
+	char *new;
+
+	if (str == NULL)
+		return (NULL);
+	while (str[a] != '\0')
+		a++;
+	a++;
+	new = malloc(sizeof(char) * a);
+	if (new == NULL)
+		return (NULL);
+	for (; b < a; b++)
+		new[b] = str[b];
+	return (new);
+}
+/**
  * _strcmp - a.
  *
  * @s1: external value
@@ -28,8 +52,7 @@ int _strcmp(char *s1, char *s2)
 char *entrada(char *cadena, size_t largo)
 {
 	int check;
-	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env";
-	char *aux;
+	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env", *aux;
 
 	if (isatty(0))
 	{
@@ -42,7 +65,7 @@ char *entrada(char *cadena, size_t largo)
 		free(cadena);
 		if (isatty(0))
 			_putchar('\n');
-		exit(1);
+		exit(-1);
 	}
 	if (_strcmp(cadena, e3) == 0)
 	{
@@ -50,7 +73,8 @@ char *entrada(char *cadena, size_t largo)
 		return (e2);
 	}
 	cadena = strtok(cadena, e3);
-	aux = strtok(_strdup(cadena), " \t");
+	aux = _strdup(cadena);
+	aux = strtok(aux, " \t");
 	if (_strcmp(aux, e) == 0)
 	{
 		free(cadena);
@@ -105,22 +129,4 @@ char **path(char **p)
 		p[con] = strtok(NULL, ":");
 	}
 	return (p);
-}
-/**
- * lengthPath - function that travel the path
- * Return: the number of different path
- */
-int lengthPath(void)
-{
-	char *aux;
-	int i = 0, con = 1;
-
-	aux = _getenv("PATH");
-	while (aux[i])
-	{
-		if (aux[i] == ':')
-			con++;
-		i++;
-	}
-	return (con);
 }

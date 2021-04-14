@@ -10,7 +10,6 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-struct stat st;
 void enviroment(void);
 int _putchar(char c);
 extern char **environ;
