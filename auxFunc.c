@@ -47,7 +47,7 @@ char *entrada(char *cadena, size_t largo)
 		return (e2);
 	}
 	cadena = strtok(cadena, e3);
-	aux = strtok(strdup(cadena), " \t");
+	aux = strtok(_strdup(cadena), " \t");
 	if (_strcmp(aux, e) == 0)
 	{
 		free(cadena);
