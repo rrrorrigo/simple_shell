@@ -81,7 +81,7 @@ char *entrada(char *cadena, size_t largo)
 	{
 		free(cadena);
 		free(aux);
-		exit(1);
+		exit(0);
 	}
 	free(aux);
 	if (_strcmp(cadena, env) == 0)

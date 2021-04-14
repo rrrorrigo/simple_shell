@@ -31,3 +31,25 @@ int printnumber(int n)
 	}
 	return (1);
 }
+/**
+ * lines - problem betty
+ * @cad: the variable cad to free
+ * Return: void function
+ */
+void lines(char *cad)
+{
+	free(cad);
+	exit(-1);
+}
+/**
+ * lines2 - problem betty
+ * @cad: the variable cad to free
+ * @s: the variable s to free
+ * @com: the variable com to free
+ * Return: void function
+ */
+void lines2(char *cad, char **s, char **com)
+{
+	_free(cad, s, com);
+	exit(-1);
+}

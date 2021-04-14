@@ -7,10 +7,9 @@
  * of the program.
  * Return: Nothing if success, -1 if an error occurred
  */
-
 int main(__attribute__((unused)) int ac, char *av[])
 {
-	int bucle = 1, id, b, length = lengthPath(), con = 0;
+	int bucle = 1, id, b, l = lengthPath(), con = 0;
 	size_t largo = 0;
 	char **s, **com, *cad = NULL;
 
@@ -22,30 +21,30 @@ int main(__attribute__((unused)) int ac, char *av[])
 			con++;
 			s = malloc(sizeof(char *) * (longer(cad) + 1));
 			if (!s)
-			{
-				free(cad);
-				free(s);
-				exit(-1);
-			}
-			com = malloc(sizeof(char *) * (length + 1));
+				lines(cad);
+			com = malloc(sizeof(char *) * (l + 1));
 			if (!com)
-			{
-				_free(cad, s, com);
-				exit(-1);
-			}
+				lines2(cad, s, com);
 			id = fork();
 			if (id == 0)
 			{
-				execute(com, s, cad, length, con, av[0]);
+				return (execute(com, s, cad, l, con, av[0]));
 			}
 			else
 			{
-				wait(&b);
+				waitpid(-1, &b, 0);
 				_free(cad, s, com);
+				if (!isatty(0))
+				{
+					if (WIFEXITED(b))
+						return (WEXITSTATUS(b));
+					else
+						return (0);
+				}
 			}
 		}
 		else
 			free(cad);
 	}
-	return (-1);
+	return (0);
 }

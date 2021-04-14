@@ -96,9 +96,9 @@ void _free(char *cadena, char **string, char **command)
  * @av: name of program
  * Return: void function
  */
-void execute(char **com, char **s, char *cad, int length, int con, char *av)
+int execute(char **com, char **s, char *cad, int length, int con, char *av)
 {
-	char *aux1 = ": ", *aux2 = "not found\n";
+	char *aux1 = ": ", *aux2 = "not found\n", *aux3 = "Permission denied\n";
 	struct stat st;
 
 	path(com);
@@ -116,11 +116,18 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 			print(aux1);
 			print(aux2);
 			_free(cad, s, com);
-			kill(getpid(), SIGTERM);
+			return (127);
 		}
 	}
 	if (*s)
 		execve(s[0], s, NULL);
+	print(av);
+	print(aux1);
+	printnumber(con);
+	print(aux1);
+	print(cad);
+	print(aux1);
+	print(aux3);
 	_free(cad, s, com);
-	kill(getpid(), SIGTERM);
+	return (126);
 }
