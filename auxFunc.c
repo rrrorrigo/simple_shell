@@ -32,13 +32,16 @@ char *entrada(char *cadena, size_t largo)
 	char *aux;
 
 	if (isatty(0))
-		_printf("$ ");
+	{
+		_putchar('$');
+		_putchar(' ');
+	}
 	check = getline(&cadena, &largo, stdin);
 	if (check == -1)
 	{
 		free(cadena);
 		if (isatty(0))
-			_printf("\n");
+			_putchar('\n');
 		exit(1);
 	}
 	if (_strcmp(cadena, e3) == 0)

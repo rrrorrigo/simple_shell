@@ -80,6 +80,8 @@ void _free(char *cadena, char **string, char **command)
  */
 void execute(char **com, char **s, char *cad, int length, int con, char *av)
 {
+	char *aux1 = ": ", *aux2 = "not found\n";
+
 	path(com);
 	s = travel(s, cad);
 	if (stat(s[0], &st) == -1)
@@ -87,7 +89,13 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 		s[0] = status(s[0], com, length);
 		if (!s[0])
 		{
-			_printf("%s: %i: %s: not found\n", av, con, cad);
+			print(av);
+			print(aux1);
+			printnumber(con);
+			print(aux1);
+			print(cad);
+			print(aux1);
+			print(aux2);
 			_free(cad, s, com);
 			kill(getpid(), SIGTERM);
 		}

@@ -66,7 +66,7 @@ void enviroment(void)
 
 	while (environ[a] != NULL)
 	{
-		_printf("%s\n", environ[a]);
+		print(environ[a]);
 		a++;
 	}
 }
