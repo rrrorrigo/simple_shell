@@ -61,9 +61,12 @@ char *status(char *p, char **string, int length)
  */
 void _free(char *cadena, char **string, char **command)
 {
-	free(cadena);
-	free(string);
-	free(command);
+	if (cadena)
+		free(cadena);
+	if (string)
+		free(string);
+	if (command)
+		free(command);
 }
 /**
  * execute - function execute the command
@@ -92,4 +95,27 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 	execve(s[0], s, NULL);
 	_free(cad, s, com);
 	kill(getpid(), SIGTERM);
+}
+/**
+ * _strdup - duplicate a string
+ * @str: string a copiar
+ *
+ * Return: pointer of the duplicated string.
+ */
+char *_strdup(char *str)
+{
+	char *strdup;
+	int i, ii;
+
+	if (str == NULL)
+		return (NULL);
+	for (ii = 0; str[ii] != '\0'; ii++)
+	{
+	}
+	strdup = malloc(ii + 1);
+	if (strdup == NULL)
+		return (NULL);
+	for (i = 0; i < ii; i++)
+		strdup[i] = str[i];
+	return (strdup);
 }
