@@ -80,12 +80,9 @@ char *status(char *p, char **string, int length)
  */
 void _free(char *cadena, char **string, char **command)
 {
-	if (cadena)
-		free(cadena);
-	if (string)
-		free(string);
-	if (command)
-		free(command);
+	free(cadena);
+	free(string);
+	free(command);
 }
 /**
  * execute - function execute the command
@@ -99,8 +96,8 @@ void _free(char *cadena, char **string, char **command)
  */
 void execute(char **com, char **s, char *cad, int length, int con, char *av)
 {
-	struct stat st;
 	char *aux1 = ": ", *aux2 = "not found\n";
+	struct stat st;
 
 	path(com);
 	s = travel(s, cad);
