@@ -88,7 +88,7 @@ char *entrada(char *cadena, size_t largo)
 	{
 		enviroment();
 		free(cadena);
-		return (e2);
+		exit(0);
 	}
 	return (cadena);
 }
