@@ -33,11 +33,7 @@ char *_strdup(char *str)
  */
 int _strcmp(char *s1, char *s2)
 {
-<<<<<<< HEAD
 	if (!s1 || !s2)
-=======
-	if (s1 == NULL || s2 == NULL)
->>>>>>> 280aeec4ae7f75a6ce41e652904aa1a24e767f0d
 		return (-1);
 	while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
 	{
@@ -79,21 +75,15 @@ char *entrada(char *cadena, size_t largo)
 		return (e2);
 	}
 	cadena = strtok(cadena, e3);
-<<<<<<< HEAD
-	aux2 = _strdup(cadena);
-	aux = strtok(aux2, " \t");
-	if (_strcmp(aux, e) == 0)
-=======
 	aux = _strdup(cadena);
 	aux2 = strtok(aux, " \t");
 	if (_strcmp(aux2, e) == 0)
->>>>>>> 280aeec4ae7f75a6ce41e652904aa1a24e767f0d
 	{
 		free(cadena);
 		free(aux);
 		exit(1);
 	}
-	free(aux2);
+	free(aux);
 	if (_strcmp(cadena, env) == 0)
 	{
 		enviroment();
@@ -113,23 +103,14 @@ char **travel(char **string, char *cadena)
 	char *aux;
 	int con = 0;
 
-	printf("macaco curiso");
 	aux = strtok(cadena, "\n");
-	printf("macaco sale");
 	string[con] = strtok(aux, " \t");
-<<<<<<< HEAD
 	if (!string[con])
 	{
 		string[con] = NULL;
 		return (string);
 	}
 	while (string[con])
-=======
-	printf("macaco entra");
-	if (string[con] == NULL)
-		return (NULL);
-		while (string[con])
->>>>>>> 280aeec4ae7f75a6ce41e652904aa1a24e767f0d
 	{
 		con++;
 		string[con] = strtok(NULL, " \t");

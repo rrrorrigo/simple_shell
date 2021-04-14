@@ -103,11 +103,7 @@ void execute(char **com, char **s, char *cad, int length, int con, char *av)
 
 	path(com);
 	s = travel(s, cad);
-<<<<<<< HEAD
 	if (*s != NULL && stat(s[0], &st) == -1)
-=======
-	if (stat(s[0], &st) == -1 && s)
->>>>>>> 280aeec4ae7f75a6ce41e652904aa1a24e767f0d
 	{
 		s[0] = status(s[0], com, length);
 		if (!s[0])
