@@ -1,0 +1,90 @@
+.TH HSH "1" "April/2021 v 1.0" "Rodrigo Delgado & Rodrigo Briones" "manpage simple_shell"
+
+.P
+
+.SH NAME
+
+.P
+
+.B
+hsh
+\- simple command interpreter
+
+.P
+
+.SH SYNOPSIS
+Execute simple shell: ./hsh
+
+.P
+
+.SH DESCRIPTION
+
+.P
+
+like
+.I
+sh
+command, when
+.B
+hsh
+is running, the program will reads lines from the terminal, interprets them, and if the line it's a command, executes them. In another case, an
+error will be displayed on the terminal. To know that
+.B
+hsh
+is running, the prompt will change to "#SimpleShell$ "
+
+.P
+
+.SH EXAMPLES
+
+In the terminal :
+
+	bulbasaur_shiny@57d69f9420t:~# ls
+
+	dragon_city  halo.h  pikachu.c  zubat.c diglett.c  rickyfort  cachobochinche.c  holasoygerman  lagransiete.h
+
+Using
+.B
+hsh
+:
+
+	#SimpleShell$ ls
+
+	dragon_city  halo.h  pikachu.c  zubat.c diglett.c  rickyfort  cachobochinche.c  holasoygerman  lagransiete.h
+
+.P
+
+In the terminal:
+
+	bulbasaur_shiny@57d69f9420t:~# ls -a
+
+	.  ..  .pssss  .hide  dragon_city  halo.h  pikachu.c  zubat.c diglett.c  rickyfort  cachobochinche.c  holasoygerman  lagransiete.h
+
+Using
+.B
+hsh
+:
+
+	#SimpleShell$ ls -a
+
+	.  ..  .pssss  .hide  dragon_city  halo.h  pikachu.c  zubat.c diglett.c  rickyfort  cachobochinche.c  holasoygerman  lagransiete.h
+
+.P
+
+.SH SEE ALSO
+
+sh(1p)  Linux manual page
+
+.P
+
+.SH BUGS
+
+No bugs founded yet
+
+.P
+
+.SH AUTHORS
+
+Rodrigo Delgado GitHub: https://github.com/Ro8s
+
+Rodrigo Briones GitHub: https://github.com/rrrorrigo
