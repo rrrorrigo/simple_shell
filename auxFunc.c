@@ -52,7 +52,7 @@ int _strcmp(char *s1, char *s2)
 char *entrada(char *cadena, size_t largo)
 {
 	int check;
-	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env", *aux;
+	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env", *aux, *aux2;
 
 	if (isatty(0))
 	{
@@ -74,8 +74,8 @@ char *entrada(char *cadena, size_t largo)
 	}
 	cadena = strtok(cadena, e3);
 	aux = _strdup(cadena);
-	aux = strtok(aux, " \t");
-	if (_strcmp(aux, e) == 0)
+	aux2 = strtok(aux, " \t");
+	if (_strcmp(aux2, e) == 0)
 	{
 		free(cadena);
 		free(aux);
