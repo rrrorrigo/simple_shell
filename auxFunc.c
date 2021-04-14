@@ -29,6 +29,7 @@ char *entrada(char *cadena, size_t largo)
 {
 	int check;
 	char *e = "exit", *e2 = NULL, *e3 = "\n", *env = "env";
+	char *aux;
 
 	if (isatty(0))
 		_printf("$ ");
@@ -46,11 +47,14 @@ char *entrada(char *cadena, size_t largo)
 		return (e2);
 	}
 	cadena = strtok(cadena, e3);
-	if (_strcmp(strtok(cadena, " \t"), e) == 0)
+	aux = strtok(strdup(cadena), " \t");
+	if (_strcmp(aux, e) == 0)
 	{
 		free(cadena);
+		free(aux);
 		exit(1);
 	}
+	free(aux);
 	if (_strcmp(cadena, env) == 0)
 	{
 		enviroment();
