@@ -31,7 +31,15 @@ is running, the program will reads lines from the terminal, interprets them, and
 error will be displayed on the terminal. To know that
 .B
 hsh
-is running, the prompt will change to "$ "
+is running, the prompt will change to "$ ".
+
+Custom commands:
+
+.P
+
+	env = prints the enviroment
+.P
+	exit = exit out of the shell
 
 .P
 
