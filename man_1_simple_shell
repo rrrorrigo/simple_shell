@@ -31,7 +31,7 @@ is running, the program will reads lines from the terminal, interprets them, and
 error will be displayed on the terminal. To know that
 .B
 hsh
-is running, the prompt will change to "$ ".
+is running, the prompt will change to "$ ". The return values of the hsh are, 127 if the file cannot be found, 126 for permission denied or 0 on a success.
 
 Custom commands:
 
@@ -78,6 +78,24 @@ hsh
 	.  ..  .pssss  .hide  dragon_city  halo.h  pikachu.c  zubat.c diglett.c  rickyfort  cachobochinche.c  holasoygerman  lagransiete.h
 
 .P
+
+In the terminal (non-interactive mode using sh):
+
+	bulbasaur_shiny@57d69f9420t:~# echo "/bin/pwd" | sh
+
+	/root/simple_shell
+
+Using
+.B
+hsh
+(non-interactive mode):
+
+	bulbasaur_shiny@57d69f9420t:~# echo "/bin/pwd" | ./hsh
+
+	/root/simple_shell
+
+.P
+
 
 .SH SEE ALSO
 
