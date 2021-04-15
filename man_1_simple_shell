@@ -31,7 +31,7 @@ is running, the program will reads lines from the terminal, interprets them, and
 error will be displayed on the terminal. To know that
 .B
 hsh
-is running, the prompt will change to "#SimpleShell$ "
+is running, the prompt will change to "$ "
 
 .P
 
