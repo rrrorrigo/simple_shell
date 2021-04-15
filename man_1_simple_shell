@@ -32,15 +32,15 @@ error will be displayed on the terminal. To know that
 .B
 hsh
 is running, the prompt will change to "$ ". The return values of the hsh are, 127 if the file cannot be found, 126 for permission denied or 0 on a success.
-
 Custom commands:
 
 .P
 
-	env = prints the enviroment
+	env = prints the enviroment.
 .P
-	exit = exit out of the shell
-
+	exit = exit out of the shell.
+.P
+	CTRL+D = end of file.
 .P
 
 .SH EXAMPLES
@@ -99,13 +99,13 @@ hsh
 
 .SH SEE ALSO
 
-sh(1p)  Linux manual page
+sh(1p)  Linux manual page.
 
 .P
 
 .SH BUGS
 
-No bugs founded yet
+No bugs founded yet.
 
 .P
 
